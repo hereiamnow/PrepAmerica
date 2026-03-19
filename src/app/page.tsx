@@ -104,10 +104,11 @@ export default function Home() {
       </section>
 
       {/* Enhanced Courses CTA Section */}
-      <section id="section-courses-cta" className="relative py-24 overflow-hidden bg-primary text-white">
+      <section id="section-courses-cta" className="hidden display:none relative py-24 overflow-hidden bg-primary text-white">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 transform translate-x-1/2" />
         <div className="container relative z-10 mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
+
             <div className="lg:w-1/2 space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-bold uppercase tracking-wider border border-white/20">
                 <Award className="h-4 w-4 text-accent" /> National Certification Program
