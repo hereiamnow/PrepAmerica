@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Planner", href: "/planner" },
+  // { name: "Planner", href: "/planner" },
   { name: "Resources", href: "/resources" },
   { name: "Courses", href: "/courses" },
   { name: "Store", href: "/store" },
