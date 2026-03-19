@@ -1,8 +1,17 @@
 
+'use client';
+
 import Link from "next/link";
 import { Shield, Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="w-full border-t bg-white py-12">
       <div className="container mx-auto px-4 md:px-6">
@@ -41,7 +50,7 @@ export default function Footer() {
               <Mail className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
             </div>
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} PrepAmerica. All rights reserved.
+              © {year || '...'} PrepAmerica. All rights reserved.
             </p>
           </div>
         </div>
