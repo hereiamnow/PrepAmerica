@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-16 pb-20">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center overflow-hidden">
+      <section id="section-hero" className="relative h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={heroImg?.imageUrl || "https://picsum.photos/seed/prep-hero/1200/600"}
@@ -46,7 +46,7 @@ export default function Home() {
       </section>
 
       {/* Features Grid */}
-      <section className="container mx-auto px-4 md:px-6">
+      <section id="section-features" className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl font-headline font-bold text-primary">Everything You Need to Prepare</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Enhanced Courses CTA Section */}
-      <section className="relative py-24 overflow-hidden bg-primary text-white">
+      <section id="section-courses-cta" className="relative py-24 overflow-hidden bg-primary text-white">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 transform translate-x-1/2" />
         <div className="container relative z-10 mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -172,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section id="newsletter" className="py-20">
+      <section id="section-newsletter" className="py-20">
         <div id="newsletter_component" className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
