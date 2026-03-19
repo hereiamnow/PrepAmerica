@@ -7,6 +7,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Home() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
+  const courseCtaImg = PlaceHolderImages.find(img => img.id === 'course-cta-img');
 
   return (
     <div className="flex flex-col gap-16 pb-20">
@@ -99,6 +100,56 @@ export default function Home() {
               <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Courses CTA Section */}
+      <section className="bg-muted/30 py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 space-y-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-bold uppercase tracking-wider border border-accent/20">
+                <GraduationCap className="h-4 w-4" /> Professional Certifications
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-primary leading-tight">
+                Don't Just Prepare.<br /><span className="text-accent">Be Qualified.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Gear is only as good as the hands that use it. Our expert-led courses provide the practical skills needed to survive and thrive in critical situations. From trauma medicine to perimeter security, get certified by the best in the field.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Expert-Led Video Training",
+                  "Printable Field Manuals",
+                  "Lifetime Course Access",
+                  "Verified Certificates"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-accent" />
+                    <span className="font-semibold text-primary/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-4">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-10 rounded-xl shadow-lg shadow-primary/20">
+                  <Link href="/courses">View Certification Tracks</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              <div className="relative h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl z-10 border-4 border-white">
+                <Image
+                  src={courseCtaImg?.imageUrl || "https://picsum.photos/seed/prep-training-cta/800/600"}
+                  alt="Professional survival training"
+                  fill
+                  className="object-cover"
+                  data-ai-hint="medical training"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-accent/10 rounded-full -z-0 blur-3xl opacity-60"></div>
+              <div className="absolute -top-6 -left-6 w-64 h-64 bg-primary/10 rounded-full -z-0 blur-3xl opacity-60"></div>
+            </div>
+          </div>
         </div>
       </section>
 
