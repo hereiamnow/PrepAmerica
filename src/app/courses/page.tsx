@@ -1,8 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Clock, BookOpen, Award, CheckCircle2 } from "lucide-react";
+import { GraduationCap, Clock, BookOpen, Award, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
 const courses = [
@@ -90,9 +89,9 @@ export default function CoursesPage() {
           Complete our core curriculum (First Aid, Sanitation, and Planning) to receive the official PrepAmerica Certified Household designation and an emergency vehicle decal.
         </p>
         <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-primary">
-          <div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-accent" /> Expert Content</div>
-          <div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-accent" /> Lifetime Access</div>
-          <div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-accent" /> Professional Certificates</div>
+          <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-accent" /> Expert Content</div>
+          <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-accent" /> Lifetime Access</div>
+          <div className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-accent" /> Professional Certificates</div>
         </div>
       </section>
     </div>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Loader2, Shield, AlertTriangle, Package, ExternalLink, RefreshCcw } from "lucide-react";
+import { Loader2, Shield, TriangleAlert, Package, ExternalLink, RefreshCcw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const plannerSchema = z.object({
@@ -186,7 +185,7 @@ export default function PlannerPage() {
           <Card className="shadow-md border-primary/20 bg-primary/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-primary">
-                <AlertTriangle className="h-5 w-5" /> Relevant Resources & Links
+                <TriangleAlert className="h-5 w-5" /> Relevant Resources & Links
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">

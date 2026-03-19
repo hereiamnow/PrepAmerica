@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Professional emergency response background",
+      "imageUrl": "https://picsum.photos/seed/prep-hero/1200/600",
+      "imageHint": "emergency disaster"
+    },
+    {
+      "id": "resource-first-aid",
+      "description": "First aid kit and medical supplies",
+      "imageUrl": "https://picsum.photos/seed/prep-firstaid/600/400",
+      "imageHint": "first aid"
+    },
+    {
+      "id": "course-cert",
+      "description": "Professional certification training",
+      "imageUrl": "https://picsum.photos/seed/prep-course/600/400",
+      "imageHint": "training education"
+    },
+    {
+      "id": "store-water",
+      "description": "Water filtration and storage gear",
+      "imageUrl": "https://picsum.photos/seed/prep-water/600/400",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "store-power",
+      "description": "Solar generators and batteries",
+      "imageUrl": "https://picsum.photos/seed/prep-power/600/400",
+      "imageHint": "solar generator"
+    },
+    {
+      "id": "review-radio",
+      "description": "Emergency solar hand-crank radio",
+      "imageUrl": "https://picsum.photos/seed/prep-radio/600/400",
+      "imageHint": "emergency radio"
+    }
+  ]
 }
