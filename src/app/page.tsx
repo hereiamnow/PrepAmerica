@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Shield, BookOpen, GraduationCap, ShoppingCart, Star, ArrowRight, CheckCircle } from "lucide-react";
+import { Shield, BookOpen, GraduationCap, ShoppingCart, Star, ArrowRight, CheckCircle, Award } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Home() {
@@ -103,41 +103,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Courses CTA Section */}
-      <section className="bg-muted/30 py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* Enhanced Courses CTA Section */}
+      <section className="relative py-24 overflow-hidden bg-primary text-white">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 transform translate-x-1/2" />
+        <div className="container relative z-10 mx-auto px-4 md:px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-bold uppercase tracking-wider border border-accent/20">
-                <GraduationCap className="h-4 w-4" /> Professional Certifications
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm font-bold uppercase tracking-wider border border-white/20">
+                <Award className="h-4 w-4 text-accent" /> National Certification Program
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-primary leading-tight">
-                Don't Just Prepare.<br /><span className="text-accent">Be Qualified.</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold leading-tight">
+                Master Survival Skills with <span className="text-accent">Expert Certification</span>.
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Gear is only as good as the hands that use it. Our expert-led courses provide the practical skills needed to survive and thrive in critical situations. From trauma medicine to perimeter security, get certified by the best in the field.
+              <p className="text-xl text-primary-foreground/90 leading-relaxed max-w-xl">
+                Gear is just equipment. Knowledge is your most powerful tool. Join our specialized training tracks led by elite first responders and disaster specialists.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              
+              <div className="space-y-4">
                 {[
-                  "Expert-Led Video Training",
-                  "Printable Field Manuals",
-                  "Lifetime Course Access",
-                  "Verified Certificates"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent" />
-                    <span className="font-semibold text-primary/80">{item}</span>
+                  { title: "Civilian First Responder", desc: "Life-saving trauma and medical training." },
+                  { title: "Grid-Down Power Systems", desc: "Solar and battery backup engineering." },
+                  { title: "Perimeter & Home Defense", desc: "Advanced security for your household." }
+                ].map((track, i) => (
+                  <div key={i} className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                    <CheckCircle className="h-6 w-6 text-accent shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-lg">{track.title}</h4>
+                      <p className="text-primary-foreground/70 text-sm">{track.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="pt-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-10 rounded-xl shadow-lg shadow-primary/20">
-                  <Link href="/courses">View Certification Tracks</Link>
+
+              <div className="pt-6">
+                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white font-bold h-16 px-12 text-lg rounded-2xl shadow-xl shadow-black/20">
+                  <Link href="/courses">Explore Certification Tracks</Link>
                 </Button>
               </div>
             </div>
+
             <div className="lg:w-1/2 relative">
-              <div className="relative h-[450px] w-full rounded-3xl overflow-hidden shadow-2xl z-10 border-4 border-white">
+              <div className="relative h-[550px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl z-10 border-8 border-white/10">
                 <Image
                   src={courseCtaImg?.imageUrl || "https://picsum.photos/seed/prep-training-cta/800/600"}
                   alt="Professional survival training"
@@ -145,43 +151,55 @@ export default function Home() {
                   className="object-cover"
                   data-ai-hint="medical training"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-widest text-accent">Next Live Session</p>
+                      <p className="text-xl font-bold">Trauma Med Certification</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold">14</p>
+                      <p className="text-xs uppercase font-bold text-white/60">Spots Left</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-accent/10 rounded-full -z-0 blur-3xl opacity-60"></div>
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-primary/10 rounded-full -z-0 blur-3xl opacity-60"></div>
+              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-accent/20 rounded-full blur-3xl opacity-40 animate-pulse"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section id="newsletter" className="bg-primary text-white py-16">
+      <section id="newsletter" className="bg-muted/30 py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-headline font-bold">Get Your Free 72-Hour Checklist</h2>
-              <p className="text-primary-foreground/80 text-lg">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">Get Your Free 72-Hour Checklist</h2>
+              <p className="text-muted-foreground text-lg">
                 Join our newsletter and receive our comprehensive 72-hour emergency checklist immediately. Stay updated with weekly preparedness tips and gear deals.
               </p>
               <ul className="space-y-3">
                 {["Weekly Gear Discounts", "Expert Survival Tips", "Local Risk Alerts"].map((item, i) => (
-                  <li key={i} className="flex items-center space-x-3">
+                  <li key={i} className="flex items-center space-x-3 text-primary/80 font-medium">
                     <CheckCircle className="h-5 w-5 text-accent" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-xl text-foreground">
+            <div className="bg-white p-8 rounded-3xl shadow-xl border border-muted text-foreground">
               <form className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-semibold">Full Name</label>
-                  <input id="name" type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-accent outline-none" required />
+                  <label htmlFor="name" className="text-sm font-semibold text-primary">Full Name</label>
+                  <input id="name" type="text" placeholder="John Doe" className="w-full px-4 py-3 rounded-xl border border-muted focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all" required />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-semibold">Email Address</label>
-                  <input id="email" type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-accent outline-none" required />
+                  <label htmlFor="email" className="text-sm font-semibold text-primary">Email Address</label>
+                  <input id="email" type="email" placeholder="john@example.com" className="w-full px-4 py-3 rounded-xl border border-muted focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all" required />
                 </div>
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90 h-12 text-lg font-bold">
+                <Button type="submit" className="w-full bg-accent hover:bg-accent/90 h-14 text-lg font-bold rounded-xl shadow-lg shadow-accent/20">
                   Send Me the Checklist
                 </Button>
                 <p className="text-xs text-center text-muted-foreground pt-2">

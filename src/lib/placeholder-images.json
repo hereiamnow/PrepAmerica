@@ -35,6 +35,12 @@
       "description": "Emergency solar hand-crank radio",
       "imageUrl": "https://picsum.photos/seed/prep-radio/600/400",
       "imageHint": "emergency radio"
+    },
+    {
+      "id": "course-cta-img",
+      "description": "Hands-on emergency medical training",
+      "imageUrl": "https://picsum.photos/seed/prep-training-cta/800/600",
+      "imageHint": "medical training"
     }
   ]
 }
