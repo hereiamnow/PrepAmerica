@@ -143,7 +143,7 @@ export default function Home() {
             </div>
 
             <div className="lg:w-1/2 relative">
-              <div className="relative h-[550px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl z-10 border-8 border-white/10">
+              <div className="relative h-[550px] w-full rounded-[1rem] overflow-hidden shadow-2xl z-10 border-1 border-white/10">
                 <Image
                   src={courseCtaImg?.imageUrl || "https://picsum.photos/seed/prep-training-cta/800/600"}
                   alt="Professional survival training"
@@ -172,8 +172,8 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section id="newsletter" className="bg-muted/30 py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="newsletter" className="py-20">
+        <div id="newsletter_component" className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">Get Your Free 72-Hour Checklist</h2>
