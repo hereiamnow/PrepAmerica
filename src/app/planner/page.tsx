@@ -1,7 +1,8 @@
+
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { generatePersonalizedPrepPlan, type PersonalizedPrepPlanOutput } from "@/ai/flows/personalized-prep-plan-generation";
@@ -11,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Loader2, Shield, TriangleAlert, Package, ExternalLink, RefreshCcw } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 const plannerSchema = z.object({
   familySize: z.coerce.number().int().positive().max(20),
@@ -22,14 +22,14 @@ const plannerSchema = z.object({
 type PlannerForm = z.infer<typeof plannerSchema>;
 
 const RISKS = [
-  "Earthquakes", "Hurricanes", "Floods", "Wildfires", "Winter Storms", "Tornados", "Power Outages", "Civil Unrest"
+  "Earthquakes", "Hurricanes", "Floods", "Wildfires", "Winter Storms", "Tornadoes", "Power Outages", "Civil Unrest"
 ];
 
 export default function PlannerPage() {
   const [plan, setPlan] = useState<PersonalizedPrepPlanOutput | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<PlannerForm>({
+  const { register, handleSubmit, control, formState: { errors } } = useForm<PlannerForm>({
     resolver: zodResolver(plannerSchema),
     defaultValues: {
       familySize: 2,
@@ -37,17 +37,6 @@ export default function PlannerPage() {
       localRisks: [],
     }
   });
-
-  const selectedRisks = watch("localRisks");
-
-  const toggleRisk = (risk: string) => {
-    const current = selectedRisks;
-    if (current.includes(risk)) {
-      setValue("localRisks", current.filter(r => r !== risk));
-    } else {
-      setValue("localRisks", [...current, risk]);
-    }
-  };
 
   const onSubmit = async (data: PlannerForm) => {
     setLoading(true);
@@ -103,20 +92,37 @@ export default function PlannerPage() {
 
               <div className="space-y-3">
                 <Label>Primary Local Risks</Label>
-                <div className="grid grid-cols-2 gap-4">
-                  {RISKS.map((risk) => (
-                    <div key={risk} className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-muted/30 cursor-pointer" onClick={() => toggleRisk(risk)}>
-                      <Checkbox
-                        id={risk}
-                        checked={selectedRisks.includes(risk)}
-                        onCheckedChange={() => toggleRisk(risk)}
-                      />
-                      <label htmlFor={risk} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer">
-                        {risk}
-                      </label>
+                <Controller
+                  name="localRisks"
+                  control={control}
+                  render={({ field }) => (
+                    <div className="grid grid-cols-2 gap-4">
+                      {RISKS.map((risk) => (
+                        <div 
+                          key={risk} 
+                          className="flex items-center space-x-2 border p-3 rounded-lg hover:bg-muted/30 transition-colors"
+                        >
+                          <Checkbox
+                            id={risk}
+                            checked={field.value.includes(risk)}
+                            onCheckedChange={(checked) => {
+                              const newValue = checked
+                                ? [...field.value, risk]
+                                : field.value.filter((val) => val !== risk);
+                              field.onChange(newValue);
+                            }}
+                          />
+                          <Label 
+                            htmlFor={risk} 
+                            className="text-sm font-medium leading-none cursor-pointer flex-1"
+                          >
+                            {risk}
+                          </Label>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )}
+                />
                 {errors.localRisks && <p className="text-xs text-destructive">{errors.localRisks.message}</p>}
               </div>
             </form>
@@ -134,12 +140,12 @@ export default function PlannerPage() {
         </Card>
       ) : (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-6 rounded-xl shadow-sm border gap-4">
             <div>
               <h2 className="text-2xl font-bold text-primary font-headline">{plan.planTitle}</h2>
               <p className="text-muted-foreground">{plan.planSummary}</p>
             </div>
-            <Button variant="outline" onClick={() => setPlan(null)} className="flex items-center gap-2">
+            <Button variant="outline" onClick={() => setPlan(null)} className="flex items-center gap-2 whitespace-nowrap">
               <RefreshCcw className="h-4 w-4" /> Start New
             </Button>
           </div>
@@ -155,7 +161,7 @@ export default function PlannerPage() {
                 <ul className="space-y-3">
                   {plan.recommendedSupplies.map((supply, i) => (
                     <li key={i} className="flex items-start gap-3 border-b pb-2 last:border-0">
-                      <div className="mt-1 h-2 w-2 rounded-full bg-accent" />
+                      <div className="mt-1.5 h-2 w-2 rounded-full bg-accent shrink-0" />
                       <span className="text-sm">{supply}</span>
                     </li>
                   ))}
@@ -173,7 +179,7 @@ export default function PlannerPage() {
                 <ul className="space-y-3">
                   {plan.actionsToTake.map((action, i) => (
                     <li key={i} className="flex items-start gap-3 border-b pb-2 last:border-0">
-                      <div className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                      <div className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0" />
                       <span className="text-sm">{action}</span>
                     </li>
                   ))}
