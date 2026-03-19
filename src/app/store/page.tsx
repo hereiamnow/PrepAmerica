@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 const products = [
   {
     name: "LifeStraw Personal Water Filter",
+    description: "A compact and lightweight water filter that allows you to drink directly from streams and lakes, removing bacteria and parasites.",
     brand: "LifeStraw",
     price: "$19.95",
     category: "Water",
@@ -24,6 +25,7 @@ const products = [
   },
   {
     name: "Jackery Solar Generator 1000",
+    description: "A portable solar generator that provides reliable power for your devices and appliances during emergencies or outdoor adventures.",
     brand: "Jackery",
     price: "$1,099.00",
     category: "Power",
@@ -34,6 +36,8 @@ const products = [
   },
   {
     name: "ReadyWise Emergency Food Supply",
+    description: "A long-lasting emergency food supply with a variety of meals to sustain you during disasters.",
+
     brand: "ReadyWise",
     price: "$149.99",
     category: "Food",
@@ -44,6 +48,8 @@ const products = [
   },
   {
     name: "Fenix PD36R 1600 Lumen Flashlight",
+    description: "A high-performance flashlight with multiple brightness levels and a long-lasting battery, ideal for emergency situations.",
+
     brand: "Fenix",
     price: "$99.95",
     category: "Light",
@@ -54,6 +60,8 @@ const products = [
   },
   {
     name: "Mountain House Classic Bucket",
+    description: "A long-lasting emergency food supply with a variety of meals to sustain you during disasters.",
+
     brand: "Mountain House",
     price: "$165.00",
     category: "Food",
@@ -64,6 +72,7 @@ const products = [
   },
   {
     name: "Sawyer Squeeze Water Filtration",
+    description: "A compact and efficient water filtration system that removes harmful contaminants, perfect for outdoor adventures and emergencies.",
     brand: "Sawyer",
     price: "$38.95",
     category: "Water",
@@ -74,6 +83,7 @@ const products = [
   },
   {
     name: "BioLite CampStove 2+",
+    description: "A portable camp stove that generates electricity from the heat of the fire, allowing you to charge your devices while cooking.",
     brand: "BioLite",
     price: "$149.95",
     category: "Power",
@@ -84,6 +94,7 @@ const products = [
   },
   {
     name: "Petzl Swift RL Headlamp",
+    description: "A powerful and rechargeable headlamp with reactive lighting technology, perfect for hands-free illumination in emergencies.",
     brand: "Petzl",
     price: "$119.95",
     category: "Light",
@@ -102,7 +113,7 @@ export default function StorePage() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
-      const matchesSearch = 
+      const matchesSearch =
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.brand.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === "All" || product.category === selectedCategory;
@@ -124,8 +135,8 @@ export default function StorePage() {
         </div>
         <div className="relative w-full max-w-sm group">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-accent transition-colors" />
-          <Input 
-            placeholder="Search by product or brand..." 
+          <Input
+            placeholder="Search by product or brand..."
             className="pl-10 h-12 border-primary/20 rounded-xl focus:ring-accent"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -141,18 +152,18 @@ export default function StorePage() {
             onClick={() => setSelectedCategory(cat)}
             className={cn(
               "rounded-full px-6 transition-all",
-              selectedCategory === cat 
-                ? "bg-primary shadow-md" 
+              selectedCategory === cat
+                ? "bg-primary shadow-md"
                 : "border-primary/20 text-primary hover:border-accent hover:text-accent"
             )}
           >
             {cat}
           </ShadButton>
         ))}
-        { (searchQuery || selectedCategory !== "All") && (
-          <ShadButton 
-            variant="ghost" 
-            size="sm" 
+        {(searchQuery || selectedCategory !== "All") && (
+          <ShadButton
+            variant="ghost"
+            size="sm"
             onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
             className="text-muted-foreground hover:text-destructive"
           >
